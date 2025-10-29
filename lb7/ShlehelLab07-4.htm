@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <title>ЛР7: Форма замовлення товару</title>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background-color: #F8F8FF; }
+        .form-group { margin-bottom: 15px; border: 1px solid #AAA; padding: 10px; border-radius: 5px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input[type="text"], input[type="password"] { padding: 8px; width: 300px; border: 1px solid #CCC; }
+        textarea, select { border: 1px solid #CCC; padding: 5px; }
+    </style>
+</head>
+<body>
+
+    <h2>Завдання 3. Створення форми для заповнення замовлення на товар</h2>
+
+    <form action="process_order.php" method="post">
+
+        <div class="form-group">
+            <label for="bank_acc">Номер банківського рахунку :</label>
+            <input type="password" id="bank_acc" name="bank_account" size="40" maxlength="20" required>
+        </div>
+
+        <div class="form-group">
+            <label for="user_id">Особистий номер користувача:</label>
+            <input type="text" id="user_id" name="personal_id" size="40" required>
+        </div>
+
+        <div class="form-group">
+            <label for="items">Оберіть товари для замовлення (можна вибрати декілька, утримуйте Ctrl/Cmd):</label>
+            <select id="items" name="products[]" multiple size="5" style="width: 300px;">
+                <option value="laptop">Ноутбук</option>
+                <option value="monitor">Монітор</option>
+                <option value="keyboard">Механічна клавіатура</option>
+                <option value="mouse">Бездротова миша</option>
+                <option value="hdd">Зовнішній HDD</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Оберіть вид оплати:</label>
+            <input type="radio" id="cash" name="payment_type" value="cash" checked> <label for="cash" style="display: inline;">Готівковий розрахунок</label><br>
+            <input type="radio" id="card" name="payment_type" value="card"> <label for="card" style="display: inline;">Безготівковий розрахунок</label>
+        </div>
+
+        <div class="form-group">
+            <label>Бажаєте одержати додаткову інформацію при відповіді?</label>
+            <input type="checkbox" id="balance" name="info_balance" value="yes"> <label for="balance" style="display: inline;">Дані про залишки на рахунку</label><br>
+            <input type="checkbox" id="payments" name="info_payments" value="yes"> <label for="payments" style="display: inline;">Список останніх виплат по рахунку</label>
+        </div>
+
+        <div class="form-group">
+            <label for="comments">Довільні коментарі до замовлення:</label>
+            <textarea id="comments" name="user_comments" rows="4" cols="50" wrap="soft"></textarea>
+        </div>
+        
+        <p>
+            <input type="submit" value="Підтвердити замовлення">
+            <input type="reset" value="Скинути форму">
+        </p>
+
+    </form>
+</body>
+</html>

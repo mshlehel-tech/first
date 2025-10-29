@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <title>ЛР7: Форма з усіма елементами</title>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Tahoma, sans-serif; background-color: #FFFFE0; padding: 20px; }
+        fieldset { margin-bottom: 20px; padding: 15px; border: 2px solid #DDAA00; border-radius: 8px; }
+        legend { font-weight: bold; color: #AA0000; font-size: 1.1em; padding: 0 10px; }
+        .label { display: inline-block; width: 250px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <h2>Завдання 1. Створення форми з усіма переліченими елементами</h2>
+
+    <form action="demo_all.php" method="post">
+
+        <fieldset>
+            <legend>1. Текстові елементи (TEXT, TEXTAREA, PASSWORD)</legend>
+            <label class="label">Текстове поле (TEXT):</label> 
+            <input type="text" name="text_field" size="30" maxlength="50" value="Введіть текст"><br>
+            
+            <label class="label">Пароль (PASSWORD):</label> 
+            <input type="password" name="user_pass" size="15" maxlength="20"><br>
+            
+            <label class="label">Текстова область (TEXTAREA):</label> <br>
+            <textarea name="comment" rows="4" cols="50" wrap="soft">Текст для коментарів...</textarea>
+        </fieldset>
+
+        <fieldset>
+            <legend>2. Елементи вибору (SELECT, CHECKBOX, RADIOBUTTON)</legend>
+            <label class="label">Вибір мови (SELECT - єдиний вибір):</label>
+            <select name="language" size="1">
+                <option value="ua">Українська</option>
+                <option value="en" selected>Англійська</option>
+                <option value="pl">Польська</option>
+            </select><br>
+
+            <label class="label">Опції (CHECKBOX - множинний вибір):</label><br>
+            <input type="checkbox" name="opt1" value="yes"> Опція А |
+            <input type="checkbox" name="opt2" value="yes" checked> Опція Б |
+            <input type="checkbox" name="opt3" value="yes"> Опція В <br>
+            
+            <label class="label">Рівень знань (RADIO - єдиний вибір):</label><br>
+            <input type="radio" name="level" value="beginner" checked> Новачок |
+            <input type="radio" name="level" value="intermediate"> Середній |
+            <input type="radio" name="level" value="expert"> Експерт <br>
+        </fieldset>
+
+        <fieldset>
+            <legend>3. Командні елементи (SUBMIT, RESET, BUTTON, FILE)</legend>
+            <label class="label">Прикріплення файлу (FILE):</label>
+            <input type="file" name="upload_file" size="50" accept=".pdf, .docx"><br>
+            
+            <label class="label">Звичайна кнопка (BUTTON):</label>
+            <input type="button" value="Показати дату" onclick="alert(Date());"><br>
+
+            <input type="reset" value="Скинути всі поля">
+            <input type="submit" value="Надіслати форму">
+        </fieldset>
+
+    </form>
+</body>
+</html>
