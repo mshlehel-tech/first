@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <title>ЛР9: Завдання 3 - Класи menu та small</title>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: 'Tahoma', sans-serif; padding: 20px; }
+        
+        /* 1. Клас для елементів меню */
+        .menu {
+            list-style-type: none; 
+            padding: 0;
+            margin: 0;
+            background-color: #EFEFEF;
+            border-bottom: 2px solid #555;
+            display: flex; /* Використовуємо flexbox для меню */
+        }
+        .menu li {
+            margin-right: 15px;
+        }
+        .menu a {
+            text-decoration: none;
+            color: #0055AA;
+            font-weight: bold;
+            padding: 10px 15px;
+            display: block;
+        }
+        .menu a:hover {
+            background-color: #DDD;
+        }
+
+        /* 2. Клас для невеликих інформаційних повідомлень */
+        .small-info {
+            font-size: 0.85em;
+            color: #777;
+            text-align: center;
+            margin-top: 30px;
+            padding: 10px;
+            border-top: 1px dotted #AAA;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Кібербезпека в епоху цифрової трансформації</h1>
+
+    <ul class="menu">
+        <li><a href="#">Головна сторінка</a></li>
+        <li><a href="#">Про автора</a></li>
+        <li><a href="#">Про нас</a></li>
+        <li><a href="#">Контакти</a></li>
+    </ul>
+
+    <p style="margin-top: 40px; line-height: 1.6;">
+        В умовах, коли більшість даних переходить в цифровий формат, **кібербезпека стає не просто функцією, а фундаментальною вимогою** для існування бізнесу та держави. Захист даних включає не лише технічні засоби (шифрування, фаєрволи), але й навчання користувачів правилам гігієни та безпеки. Розуміння загроз — перший крок до їх запобігання.
+    </p>
+
+    <p style="line-height: 1.6;">
+        Сучасні фахівці з безпеки використовують інструменти ШІ для виявлення аномалій та прогнозування атак. Це дозволяє перейти від реактивного захисту до проактивного моніторингу, забезпечуючи надійний цифровий суверенітет.
+    </p>
+
+    <div class="small-info">
+        Адреса поточної сторінки: /lb9/ShlehelLab09-3.htm | Автор статті: [Шлегель Марія] | Постійно оновлюється
+    </div>
+
+</body>
+</html>
