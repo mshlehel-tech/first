@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <title>ЛР8: Глобальні стилі (Internal Style Sheets)</title>
+    <meta charset="UTF-8">
+    
+    <style>
+        /* Стилі для всіх абзаців */
+        p {
+            font-family: Verdana, sans-serif;
+            font-size: 14pt;
+            color: #333333; /* Темно-сірий */
+            line-height: 1.5;
+            margin: 15px 50px; /* Зовнішній відступ */
+            border-left: 5px solid #00AAEE; /* Рамка зліва */
+            padding-left: 10px;
+        }
+
+        /* Стилі для всіх контейнерів DIV */
+        div {
+            background-color: #EEEEFF; /* Світло-блакитний фон */
+            padding: 20px;
+            margin: 25px auto; /* Центрування DIV */
+            width: 70%;
+            border-radius: 8px;
+            box-shadow: 2px 2px 5px #AAAAAA;
+        }
+
+        /* Стиль для посилань */
+        a {
+            color: #CC0000;
+            text-decoration: none;
+        }
+        a:hover { /* Стиль при наведенні курсору */
+            text-decoration: underline;
+            color: #FF0000;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h2>Завдання 2. Єдність стильового оформлення за допомогою тегу &lt;style&gt;</h2>
+
+    <p>Цей абзац має сині вертикальні лінії, вирівняний шрифт та відступи, визначені в контейнері &lt;style&gt;. Це дозволяє швидко змінювати дизайн усіх абзаців одночасно.</p>
+
+    <div>
+        <h3>Розділ 1: Контейнер DIV</h3>
+        <p>Весь текст всередині цього контейнера DIV має світло-блакитний фон, встановлений для DIV, але зберігає всі стилі абзацу P, оскільки вони також застосовуються.</p>
+        <p>Тут розташоване <a href="#">гіперпосилання</a>, яке також стилізоване у секції &lt;style&gt;.</p>
+    </div>
+
+    <p>Цей останній абзац знову знаходиться поза DIV, але зберігає всі стилі, визначені для &lt;p&gt;.</p>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <title>ЛР9: Завдання 2 - Класи без тегів</title>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: 'Verdana', sans-serif; padding: 20px; }
+        
+        /* Клас для назви розділу (застосовується до H3) */
+        .section-name {
+            font-size: 1.5em;
+            color: #A0522D; 
+            text-transform: uppercase;
+            border-bottom: 1px solid #A0522D;
+        }
+
+        /* Клас для основного тексту (застосовується до P) */
+        .main-text {
+            font-size: 14pt;
+            line-height: 1.6;
+            text-align: justify;
+            margin-bottom: 25px;
+        }
+
+        /* Клас для виноски (застосовується до SPAN або SMALL) */
+        .footnote {
+            font-size: 0.8em;
+            color: #666;
+            border-top: 1px dashed #CCC;
+            display: block; 
+            padding-top: 5px;
+            margin-top: 30px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Тренди веб-розробки: Frontend, Backend та DevSecOps</h1>
+
+    <h3 class="section-name">Frontend-технології: фокус на продуктивності та DX</h3>
+    
+    <p class="main-text">
+        Сучасний frontend більше не обмежується React чи Angular. Сьогодні великого значення набувають фреймворки, орієнтовані на **Developer Experience (DX)** та продуктивність, як-от Vue.js та Svelte. Ключовим трендом є **Server-Side Rendering (SSR)** для швидшого початкового завантаження та кращої SEO-оптимізації.
+    </p>
+    
+    <h3 class="section-name">Backend: мікросервіси та безсерверні архітектури</h3>
+    
+    <p class="main-text">
+        На рівні backend'у домінує перехід до мікросервісної архітектури, що забезпечує масштабованість та незалежність окремих компонентів. Зростає популярність **функцій як сервісу (FaaS)**, де розробники можуть розгортати код без необхідності керування інфраструктурою. Основними мовами залишаються Python, Node.js та Go.
+    </p>
+
+    <p class="main-text">
+        На відміну від старих монолітних застосунків, мікросервіси дозволяють швидко впроваджувати зміни, проте вимагають складніших механізмів моніторингу та логування.
+    </p>
+
+    <span class="footnote">
+        * За даними останніх звітів, кількість проєктів, що використовують гібридні архітектури (мікросервіси + моноліт), зросла на 40% за останній рік.
+    </span>
+
+</body>
+</html>
