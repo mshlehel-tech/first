@@ -1,0 +1,29 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+h1 {
+  color: #007bff;
+  text-align: center;
+}
+#group-list {
+  margin-top: 30px;
+}
+h2 {
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+.journal-number {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+/* Ваш унікальний стиль */
+.my-entry {
+  background-color: #f0ffff; /* Блакитний фон */
+  color: #8b4513; /* Колір тексту - Коричневий */
+  border: 2px dashed #8b4513;
+  padding: 15px;
+}
