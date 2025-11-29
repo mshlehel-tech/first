@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <title>Реєстрація Користувача</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="main-container"> 
+        <header>
+            <div class="menu-bar">
+                <span>Мій особистий блог</span>
+                <span class="user-info">Вхід | <a href="register.html">Реєстрація</a></span>
+            </div>
+        </header>
+
+        <div class="form-wrapper">
+            <h2>Реєстрація користувача</h2>
+            
+            <form action="#" method="POST">
+                
+                <table class="form-table">
+                    <tr>
+                        <td>Прізвище</td>
+                        <td><input type="text" name="lastname" required></td>
+                    </tr>
+                    <tr>
+                        <td>Ім'я</td>
+                        <td><input type="text" name="firstname" required></td>
+                    </tr>
+                    <tr>
+                        <td>Логін</td>
+                        <td><input type="text" name="login" required></td>
+                    </tr>
+                    <tr>
+                        <td>Навчальна група</td>
+                        <td>
+                            <select name="group" required>
+                                <option value="301">301</option>
+                                <option value="302">302</option>
+				<option value="303" selected>303</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Пароль</td>
+                        <td><input type="password" name="password" required></td>
+                    </tr>
+                    <tr>
+                        <td>Підтвердження паролю</td>
+                        <td><input type="password" name="confirm_password" required></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="submit-cell">
+                            <button type="submit">Зареєструватись</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
