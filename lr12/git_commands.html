@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <title>ЛР12 | Завдання 2: Команди Git</title>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4; }
+        h1 { color: #007bff; text-align: center; border-bottom: 2px solid #ccc; padding-bottom: 10px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ccc; padding: 12px; text-align: left; }
+        th { background-color: #e0e0e0; font-weight: bold; color: #333; }
+        .command { font-family: monospace; background-color: #eee; padding: 2px 4px; border-radius: 3px; }
+    </style>
+</head>
+<body>
+
+    <h1>Основні команди Git (Завдання 2)</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2">1. Create a Repository</th>
+                <th colspan="2">2. Observe your Repository</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Створити новий локальний репозиторій</td>
+                <td class="command">git init [project name]</td>
+                <td>Перелік незафіксованих або змінених файлів</td>
+                <td class="command">git status</td>
+            </tr>
+            <tr>
+                <td>Завантажити з існуючого репозиторію</td>
+                <td class="command">git clone my_url</td>
+                <td>Показати зміни, не додані до індексу</td>
+                <td class="command">git diff</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>Показати зміни, додані до індексу (staged)</td>
+                <td class="command">git diff --cached</td>
+            </tr>
+        </tbody>
+        
+        <thead>
+            <tr>
+                <th colspan="2">3. Working with Branches</th>
+                <th colspan="2">4. Make a change</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Перелік усіх гілок</td>
+                <td class="command">git branch -av</td>
+                <td>Додати всі змінені файли до індексу (stage)</td>
+                <td class="command">git add .</td>
+            </tr>
+            <tr>
+                <td>Перейти на гілку</td>
+                <td class="command">git checkout my_branch</td>
+                <td>Додати один файл до індексу</td>
+                <td class="command">git add [file]</td>
+            </tr>
+            <tr>
+                <td>Створити нову гілку і перейти на неї</td>
+                <td class="command">git checkout -b git_new_branch</td>
+                <td>Зафіксувати staged-файли</td>
+                <td class="command">git commit -m "commit message"</td>
+            </tr>
+            <tr>
+                <td>Об'єднати гілку 'b' в 'a' (коли на 'a')</td>
+                <td class="command">git merge branch_b</td>
+                <td>Відкотити зміни до останнього коміту (небезпечно)</td>
+                <td class="command">git reset --hard</td>
+            </tr>
+        </tbody>
+        
+        <thead>
+            <tr>
+                <th colspan="2">5. Synchronize</th>
+                <th colspan="2">6. Finally!</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Завантажити останні зміни з віддаленого репозиторію (без злиття)</td>
+                <td class="command">git fetch</td>
+                <td>Відправити локальні зміни на віддалений сервер</td>
+                <td class="command">git push</td>
+            </tr>
+            <tr>
+                <td>Завантажити та злити зміни</td>
+                <td class="command">git pull</td>
+                <td>Отримати допомогу</td>
+                <td class="command">git command --help</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
