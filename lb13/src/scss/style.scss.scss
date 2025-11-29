@@ -1,0 +1,111 @@
+// Завдання 2: Кольорова гама та позиціонування
+$primary-color: #007bff; // Основний синій колір
+$header-bg: #333;
+$card-bg: #fff;
+$font-color: #333;
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: #f0f0f0;
+}
+
+// 1. Горизонтальне меню (на основі ненумерованого списку)
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $header-bg;
+  color: white;
+  padding: 10px 20px;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.5em;
+  color: #ffd700; // Жовтий колір для логотипу
+}
+
+.menu-list {
+  list-style: none; // Видаляємо маркери
+  padding: 0;
+  margin: 0;
+  display: flex; // Розташовуємо елементи горизонтально
+
+  li {
+    margin-right: 20px;
+    a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      // Посиланнями повинні бути: об'єкти горизонтального меню
+      &:hover {
+        color: #ff9900;
+      }
+    }
+  }
+}
+
+.user-actions a {
+  color: white;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+// 2. Позиціонування елементів
+.content-wrapper {
+  padding: 20px;
+}
+
+.row {
+  margin-bottom: 40px;
+
+  h2 {
+    color: $primary-color;
+    border-bottom: 2px solid $primary-color;
+    padding-bottom: 10px;
+  }
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  .card {
+    flex: 1 1 250px; // Адаптивний розмір картки (Flexbox)
+    background-color: $card-bg;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .title-link {
+      display: block;
+      text-align: center;
+      padding: 10px;
+      color: $font-color;
+      text-decoration: none;
+      font-weight: bold;
+      // Посиланнями повинні бути: назви мультфільму
+    }
+  }
+}
+
+// Посиланнями повинні бути: текст в блоках під горизонтальним меню
+.footer-link {
+  display: block;
+  text-align: center;
+  margin-top: 30px;
+  padding: 15px;
+  background-color: #ddd;
+  color: $primary-color;
+  text-decoration: none;
+  font-size: 1.1em;
+}
