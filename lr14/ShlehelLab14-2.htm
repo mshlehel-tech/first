@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <title>ЛР14.2: Bootstrap Grid - Хеш-Блоки</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        /* ======================================================= */
+        /* БАЗОВІ СТИЛІ ТА ВИМОГИ */
+        /* ======================================================= */
+        .container { min-height: 100vh; padding: 20px; }
+        .block {
+            min-height: 200px;
+            color: white;
+            font-size: 3em;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #dee2e6; /* Рамка 1px сірого кольору */
+            /* Початкові кольори (для >1200px, якщо не визначено інше) */
+            background-color: #4a77b8; /* Синій */
+        }
+        
+        /* Визначення кольорів блоків для легкого керування */
+        #block-2 { background-color: #fdd835; } /* Жовтий */
+        #block-3 { background-color: #e53935; } /* Червоний */
+
+        /* ======================================================= */
+        /* АДАПТИВНІСТЬ: CSS MEDIA QUERIES ТА BOOTSTRAP КЛАСИ */
+        /* ======================================================= */
+
+        /* ------------------------------------------------------- */
+        /* 1. Mobile / Extra Small: <= 767px */
+        /* Всі блоки по 12 колонок (вертикально) */
+        /* ------------------------------------------------------- */
+        @media (max-width: 767.98px) {
+            #block-1, #block-2, #block-3 {
+                /* Перевизначення кольору тексту для мобільного вигляду */
+                color: white; 
+            }
+        }
+
+        /* ------------------------------------------------------- */
+        /* 2. Tablet: 768px до 991px (col-md) */
+        /* Block #1 = 12; Block #2 = 6; Block #3 = 6 */
+        /* ------------------------------------------------------- */
+        @media (min-width: 768px) and (max-width: 991.98px) {
+            #block-1 {
+                /* Колір блоку #1 - синій */
+                background-color: #4a77b8; 
+            }
+            #block-2 {
+                /* Колір блоку #2 - жовтий */
+                background-color: #fdd835; 
+            }
+            #block-3 {
+                /* Колір блоку #3 - червоний */
+                background-color: #e53935; 
+            }
+        }
+        
+        /* ------------------------------------------------------- */
+        /* 3. Desktop: >= 1200px (col-xl) */
+        /* Block #1 = 6; Block #2 = 3; Block #3 = 3 */
+        /* ------------------------------------------------------- */
+        @media (min-width: 1200px) {
+            /* Забезпечення, що колір залишається синім */
+            #block-1 { background-color: #4a77b8; } 
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        
+        <div class="block block-1 
+                    col-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6"
+             id="block-1">
+            #1
+        </div>
+        
+        <div class="block block-2 
+                    col-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3"
+             id="block-2">
+            #2
+        </div>
+        
+        <div class="block block-3 
+                    col-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3"
+             id="block-3">
+            #3
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
