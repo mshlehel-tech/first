@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Моя перша гра</title>
+    <style>
+      /* Базові стилі */
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+        background-color: #f9f9f9;
+      }
+
+      .container {
+        border: 4px solid black;
+        padding: 40px;
+        background-color: white;
+        text-align: center;
+        width: 400px;
+        min-height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* Екрани */
+      #game-screen {
+        display: none;
+      }
+
+      h1 {
+        color: #d9534f;
+        font-size: 36px;
+        font-weight: normal;
+      }
+
+      button {
+        background-color: #5bc0de;
+        color: white;
+        border: 1px solid #46b8da;
+        padding: 10px 20px;
+        font-size: 18px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+
+      button:hover {
+        background-color: #31b0d5;
+      }
+
+      /* Ігрове поле */
+      #timer-text {
+        font-size: 20px;
+        margin-bottom: 20px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 2px;
+        background-color: black;
+        border: 2px solid black;
+        margin-bottom: 20px;
+      }
+
+      .cell {
+        background-color: white;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        font-weight: bold;
+        user-select: none;
+      }
+
+      .cell.found {
+        background-color: #e0e0e0; /* Підсвічування знайдених */
+        cursor: default;
+      }
+
+      /* Таблиця статистики */
+      #stats-section {
+        margin-top: 30px;
+        width: 480px;
+        display: none;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+      }
+
+      th,
+      td {
+        padding: 10px;
+        border: 1px solid #fff;
+      }
+
+      th {
+        background-color: #5bc0de;
+        color: white;
+      }
+
+      tr:nth-child(even) td {
+        background-color: #e9f2f9;
+      }
+
+      tr:nth-child(odd) td {
+        background-color: #f2f2f2;
+      }
+
+      /* Підсвічування найкращого результату */
+      tr.best-result td {
+        background-color: #ffe6cc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="start-screen">
+        <h1>Моя перша гра</h1>
+        <button id="btn-start">Почати гру</button>
+      </div>
+
+      <div id="game-screen">
+        <div id="timer-text">Залишилось: <span id="time-left">60</span></div>
+        <div class="grid" id="game-board"></div>
+        <button id="btn-restart">Почати з початку</button>
+      </div>
+    </div>
+
+    <div id="stats-section">
+      <table id="stats-table">
+        <thead>
+          <tr>
+            <th>Назва гри</th>
+            <th>Час</th>
+          </tr>
+        </thead>
+        <tbody id="stats-body"></tbody>
+      </table>
+    </div>
+
+    <script>
+      // Змінні стану гри
+      let currentNumber = 1;
+      let timeLeft = 60;
+      let timerInterval;
+      let gameCounter = 0;
+      let results = []; // Масив для збереження результатів
+
+      // Масив варіантів розміру шрифту (мінімум 5)
+      const fontSizes = ["14px", "18px", "22px", "26px", "30px", "34px"];
+
+      // Елементи DOM
+      const startScreen = document.getElementById("start-screen");
+      const gameScreen = document.getElementById("game-screen");
+      const board = document.getElementById("game-board");
+      const timeDisplay = document.getElementById("time-left");
+      const statsSection = document.getElementById("stats-section");
+      const statsBody = document.getElementById("stats-body");
+
+      // Кнопки
+      document.getElementById("btn-start").addEventListener("click", startGame);
+      document
+        .getElementById("btn-restart")
+        .addEventListener("click", restartGame);
+
+      // Функція початку гри
+      function startGame() {
+        startScreen.style.display = "none";
+        gameScreen.style.display = "block";
+        initGame();
+      }
+
+      // Ініціалізація та скидання параметрів
+      function initGame() {
+        currentNumber = 1;
+        timeLeft = 60;
+        timeDisplay.textContent = timeLeft;
+        board.innerHTML = "";
+        clearInterval(timerInterval);
+
+        generateBoard();
+        startTimer();
+      }
+
+      // Перезапуск гри (кнопка "Почати з початку")
+      function restartGame() {
+        initGame();
+      }
+
+      // Генерація ігрового поля
+      function generateBoard() {
+        // Створюємо масив чисел від 1 до 25
+        let numbers = Array.from({ length: 25 }, (_, i) => i + 1);
+
+        // Перемішуємо масив випадковим чином
+        numbers.sort(() => Math.random() - 0.5);
+
+        numbers.forEach((num) => {
+          const cell = document.createElement("div");
+          cell.classList.add("cell");
+          cell.textContent = num;
+
+          // Випадковий колір та розмір шрифту
+          cell.style.color = getRandomColor();
+          cell.style.fontSize =
+            fontSizes[Math.floor(Math.random() * fontSizes.length)];
+
+          // Обробник кліку на цифру
+          cell.addEventListener("click", () => handleCellClick(cell, num));
+
+          board.appendChild(cell);
+        });
+      }
+
+      // Обробка кліку
+      function handleCellClick(cell, num) {
+        // Якщо натиснуто правильну цифру
+        if (num === currentNumber) {
+          cell.classList.add("found");
+          currentNumber++;
+
+          // Якщо всі цифри знайдено (перемога)
+          if (currentNumber > 25) {
+            clearInterval(timerInterval);
+            let timeTaken = 60 - timeLeft;
+            alert("Вітаємо! Ви успішно завершили гру!");
+            saveResult(timeTaken);
+            initGame(); // Автоматичний старт нової гри після перемоги
+          }
+        }
+        // Якщо цифра неправильна і на неї ще не натискали правильно
+        else if (!cell.classList.contains("found")) {
+          alert("Не вірна цифра");
+        }
+      }
+
+      // Таймер
+      function startTimer() {
+        timerInterval = setInterval(() => {
+          timeLeft--;
+          timeDisplay.textContent = timeLeft;
+
+          if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            alert("Час вичерпано! Спробуйте ще раз.");
+            initGame();
+          }
+        }, 1000);
+      }
+
+      // Генерація випадкового кольору (уникаємо занадто світлих, щоб було видно на білому)
+      function getRandomColor() {
+        const r = Math.floor(Math.random() * 200);
+        const g = Math.floor(Math.random() * 200);
+        const b = Math.floor(Math.random() * 200);
+        return `rgb(${r}, ${g}, ${b})`;
+      }
+
+      // Збереження результату і оновлення таблиці
+      function saveResult(time) {
+        gameCounter++;
+        results.push({
+          name: `Гра ${gameCounter}`,
+          time: time,
+        });
+        updateStatsTable();
+      }
+
+      // Оновлення таблиці статистики
+      function updateStatsTable() {
+        statsSection.style.display = "block";
+        statsBody.innerHTML = "";
+
+        // Знаходимо найкращий час (мінімальний)
+        let bestTime = Math.min(...results.map((r) => r.time));
+
+        results.forEach((result) => {
+          const tr = document.createElement("tr");
+
+          // Якщо це найкращий результат, додаємо спеціальний клас
+          if (result.time === bestTime) {
+            tr.classList.add("best-result");
+          }
+
+          const tdName = document.createElement("td");
+          tdName.textContent = result.name;
+
+          const tdTime = document.createElement("td");
+          tdTime.textContent = `${result.time} с.`;
+
+          tr.appendChild(tdName);
+          tr.appendChild(tdTime);
+          statsBody.appendChild(tr);
+        });
+      }
+    </script>
+  </body>
+</html>
