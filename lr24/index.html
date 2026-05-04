@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ЛР 24: Мої Хобі на React</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f7f6;
+        color: #333;
+        line-height: 1.6;
+        margin: 0;
+        padding: 20px;
+      }
+      .wrapper {
+        max-width: 800px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      }
+      h1 {
+        text-align: center;
+        color: #2c3e50;
+        font-size: 2.5em;
+        margin-bottom: 30px;
+        border-bottom: 3px solid #5b9bd5;
+        display: inline-block;
+        width: 100%;
+        padding-bottom: 10px;
+      }
+      .hobby-card {
+        margin-bottom: 30px;
+        padding: 20px;
+        border-left: 5px solid #5b9bd5;
+        background: #f9fbfd;
+      }
+      h2 {
+        color: #2980b9;
+        margin-top: 0;
+      }
+      p {
+        text-align: justify;
+        font-size: 1.1em;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      // 1. Класова компонента
+      class HobbyClass extends React.Component {
+        render() {
+          return (
+            <div className="hobby-card">
+              <h2>Гармонія руху та звуку (Class Component)</h2>
+              <p>
+                Плавання для мене — найулюбленіший спорт ще з дитинства, це
+                також ідеальний спосіб відволіктися від зайвих думок. Ритмічне
+                дихання та відчуття води допомагають впорядкувати думки після
+                робочого дня. Це фізична медитація, де кожен рух — як чітко
+                написаний рядок коду. А гра на фортепіано додає життю поліфонії.
+                Читання нот з листа розвиває багатозадачність, а виконання
+                складних творів класиків навчає терпінню та увазі до найменших
+                деталей.
+              </p>
+            </div>
+          );
+        }
+      }
+
+      // 2. Функціональна компонента
+      function HobbyFunction() {
+        return (
+          <div className="hobby-card">
+            <h2>Класика та інтелект (Functional Component)</h2>
+            <p>
+              Зарубіжна класика — це мій спосіб подорожувати крізь час та
+              простір. Вона відкриває глибоке розуміння людської психології та
+              причинно-наслідкових зв'язків. Аналіз характерів героїв подібний
+              до архітектурного проектування складних систем: ти бачиш структуру
+              там, де інші бачать лише текст. Це хобі формує мій світогляд і
+              допомагає знаходити натхнення.
+            </p>
+          </div>
+        );
+      }
+
+      function App() {
+        return (
+          <div className="wrapper">
+            <h1>Світ моїх захоплень</h1>
+            <HobbyClass />
+            <HobbyFunction />
+          </div>
+        );
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<App />);
+    </script>
+  </body>
+</html>
